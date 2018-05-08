@@ -9,6 +9,23 @@
   </head>
 
   <body>
-    <%= yield %>
+
+
+    <%= render 'shared/navbar' %>
+
+    <main>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <%= render 'shared/footer' %>
+
   </body>
+
+  <script>
+    $(".button-collapse").sideNav();
+    $(".dropdown-button").dropdown();
+  </script>
+
 </html>
