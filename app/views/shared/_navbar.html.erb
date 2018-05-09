@@ -1,17 +1,17 @@
 <header>
   <!-- Dropdown Structure -->
   <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">My Profile</a></li>
+    <li><%= link_to "My Account", edit_user_registration_path %></li>
     <li><a href="#!">My Courses</a></li>
     <li class="divider"></li>
     <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
 
   <ul id="dropdown2" class="dropdown-content">
-    <li><a href="#!">My Profile</a></li>
+    <li><%= link_to "My Account", edit_user_registration_path %></li>
     <li><a href="#!">My Courses</a></li>
     <li class="divider"></li>
-    <li><%= link_to "Log_out", destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
 
   <nav class="white">
@@ -26,7 +26,7 @@
           <li><%= link_to "Log in", new_user_session_path, :class => "grey-text text-darken-3" %></li>
         <% else %>
         <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button grey-text text-darken-3" href="#!" data-activates="dropdown1"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button grey-text text-darken-3" href="#!" data-activates="dropdown1"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
         <% end %>
         </ul>
 
