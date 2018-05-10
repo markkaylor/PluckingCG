@@ -26,7 +26,10 @@
           <li><%= link_to "Log in", new_user_session_path, :class => "grey-text text-darken-3" %></li>
         <% else %>
         <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button grey-text text-darken-3" href="#!" data-activates="dropdown1"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button valign-wrapper grey-text text-darken-3" href="#!" data-activates="dropdown1">
+            <%= avatar_url(current_user, 40) %>&nbsp;
+            <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a>
+          </li>
         <% end %>
         </ul>
 
@@ -37,7 +40,10 @@
             <li><%= link_to "Log in", new_user_session_path, :class => "grey-text text-darken-3" %></li>
           <% else %>
           <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button grey-text text-darken-3" href="#!" data-activates="dropdown2"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button valign-wrapper grey-text text-darken-3" href="#!" data-activates="dropdown2">
+              <%= avatar_url(current_user, 40) %>&nbsp;
+              <%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a>
+            </li>
           <% end %>
         </ul>
       </div>
