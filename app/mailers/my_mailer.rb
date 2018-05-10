@@ -1,6 +1,6 @@
 class MyMailer < ApplicationMailer
   def sendgrid_client
-    @sendgrid_client ||= SendGrid::API.new(api_key: "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")
+    @sendgrid_client ||= SendGrid::API.new(api_key: "")
   end
 
   def new_user(user)
