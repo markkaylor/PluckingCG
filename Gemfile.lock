@@ -105,6 +105,8 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    friendly_id (5.2.4)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     has_scope (0.7.2)
@@ -302,6 +304,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.2)
   figaro (~> 1.1, >= 1.1.1)
+  friendly_id (~> 5.2, >= 5.2.4)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
