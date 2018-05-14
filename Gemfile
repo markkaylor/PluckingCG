@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'paperclip', '~> 6.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
