@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'redcarpet', '~> 3.4'
+gem 'coderay', '~> 1.1', '>= 1.1.2'
 gem 'paperclip', '~> 6.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
