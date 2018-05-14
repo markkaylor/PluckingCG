@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_skin'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
