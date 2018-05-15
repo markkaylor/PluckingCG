@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
@@ -15,9 +16,10 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'jquery-rails'
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 1.0.0.rc1'
 gem 'devise', '~> 4.2'
 gem 'toastr-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use sqlite3 as the database for Active Record

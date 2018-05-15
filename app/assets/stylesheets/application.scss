@@ -2,3 +2,15 @@
 @import "toastr";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "components/index";
+
+html {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.btn {
+  background-color: #ff5b5c;
+}
+
+.btn :hover {
+  background-color: #de4344;
+}

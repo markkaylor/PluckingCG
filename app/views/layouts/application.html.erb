@@ -2,10 +2,13 @@
 <html>
   <head>
     <title>PluckingCG</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
@@ -21,11 +24,10 @@
     </main>
 
     <%= render 'shared/footer' %>
-
   </body>
 
   <script>
-    $(".button-collapse").sideNav();
+    $('.button-collapse').sidenav();
     $(".dropdown-button").dropdown();
   </script>
 
