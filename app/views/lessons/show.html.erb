@@ -21,10 +21,11 @@
 
    <div class="col m8">
     <div class="card z-depth-2">
-      <div class="card-content">
-        <%= @lesson.video %>
+      <div class="flex-video widescreen">
+        <iframe src='https://www.youtube.com/embed/<%= @lesson.video %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
       </div>
       <div class="card-action grey-text darken-2">
+
         <h5><%= @lesson.title %></h5>
         <hr>
         <%= markdown(@lesson.note) %>
@@ -32,7 +33,6 @@
     </div>
   </div>
 </div>
-
 
 
 
