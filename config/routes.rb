@@ -6,10 +6,10 @@ Rails.application.routes.draw do
               :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
   get 'pages/about'
 
-  root 'course#index'
+  root 'courses#index'
 
-  resources :course do
-    resources :lesson, only: [:show]
+  resources :courses do
+    resources :lessons, only: [:show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
