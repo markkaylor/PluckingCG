@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 25}
 
   has_many :subscriptions
-  has_many :users, through: :subscriptions
+  has_many :courses, through: :subscriptions
 
   def self.find_for_google_oauth2(access_token, signed_in_resourse=nil)
     data = access_token.info
