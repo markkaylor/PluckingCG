@@ -17,4 +17,5 @@
 //= require toastr
 //= require materialize-sprockets
 //= require turbolinks
-//= require_tree .
+
+//= require cable.js
