@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+
   def index
     @courses = Course.all
   end
@@ -11,6 +12,12 @@ class CoursesController < ApplicationController
 
     if !current_user.nil? && !current_user.courses.nil?
       @joined = current_user.courses.include?(@course)
+    end
+  end
+
+  def list
+    if !current_user.nil?
+      @courses = current_user.courses
     end
   end
 end
