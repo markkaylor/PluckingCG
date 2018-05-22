@@ -1,65 +1,105 @@
-<div class="row">
+<div class="container">
+  <div class="row">
 
-  <div class="col m4">
-    <div class="card z-depth-2">
+    <div class="col m4">
+      <div class="card z-depth-2">
 
-      <% if !@joined  %>
+        <% if !@joined  %>
 
-        <div class="center">
-          <br>
-          <h1><%= @course.price = 0? "Free" : "$#{@course.price}" %></h1>
-        </div>
+          <div class="center">
+            <br>
+            <h1><%= @course.price == 0? "Free" : "$#{@course.price}" %></h1>
+          </div>
 
-        <div class="card-action center">
-          <% if user_signed_in? %>
-            <%= form_tag free_path do %>
-              <%= hidden_field_tag 'course_id', @course.id  %>
-                <button type="submit" class="btn pink darken-1">Get Pluckin</button>
-            <% end %>
-          <% else %>
-              <%= link_to new_user_session_path do %>
-                <button type="submit" class="btn pink darken-1">Get Pluckin</button>
-            <% end %>
-          <% end %>
-        </div>
+          <div class="card-action center">
+            <% if user_signed_in? %>
+              <% if @course.price == 0 %>
+                <%= form_tag free_path do %>
+                <%= hidden_field_tag 'course_id', @course.id  %>
+                  <button type="submit" class="btn pink darken-1">Get Pluckin</button>
+                <% end %>
 
-      <% else %>
+              <% else %>
+                <%= form_tag pay_path, id: 'chargeForm' do %>
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+                <%= hidden_field_tag 'stripeToken' %>
+                <%= hidden_field_tag 'stripeEmail' %>
+                <%= hidden_field_tag 'course_id', @course.id %>
 
-        <div class="card-content center">
-          <%= avatar_url(current_user, 80) %><br/>
-          <h5><%= current_user.name %></h5>
-        </div>
+                  <button id="customButton" type="button" class="btn btn-primary">Take this Course</button><br/>
 
+                  <script>
+                    var handler = StripeCheckout.configure({
+                      key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                      locale: 'auto',
+                      token: function(token, arg) {
+                        $('#stripeToken').val(token.id);
+                        $('#stripeEmail').val(token.email);
+                        $('#chargeForm').submit();
+                      }
+                    });
 
-      <% end %>
+                  document.getElementById('customButton').addEventListener('click', function(e) {
+                    // Open Checkout with further options:
+                    handler.open({
+                      name: 'Plucking Classical Guitar',
+                      description: '<%= @course.name %>',
+                      currency: 'usd',
+                      amount: '<%= @course.price_in_cents %>',
+                      email: '<%= current_user.email %>'
+                    });
+                    e.preventDefault();
+                  });
+                </script>
 
-    </div>
-  </div>
+                <% end %>
+              <% end %>
 
-<div class="col m8">
-  <div class="card z-depth-2">
-    <div class="card-image">
-      <%= image_tag @course.image %>
-    </div>
-    <div class="card-content grey-text darken-4">
-      <h5><%= @course.name %></h5>
-      <hr>
-      <%= @course.content %>
-        <div class="collection">
-          <% @lessons.each do |lesson| %>
-            <% if lesson.header %>
-              <div class="collection-item active">
-                <i class="tiny material-icons">queue_music</i><%= lesson.title %>
-              </div>
             <% else %>
-              <%= link_to [lesson.course, lesson], class: "collection-item" do %>
-                <%= lesson.title %>
+                <%= link_to new_user_session_path do %>
+                  <button type="submit" class="btn pink darken-1">Get Pluckin</button>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
+
+        <% else %>
+
+          <div class="card-content center">
+            <%= avatar_url(current_user, 80) %><br/>
+            <h5><%= current_user.name %></h5>
+          </div>
+
+
+        <% end %>
+
+      </div>
+    </div>
+
+  <div class="col m8">
+    <div class="card z-depth-2">
+      <div class="card-image">
+        <%= image_tag @course.image %>
+      </div>
+      <div class="card-content grey-text darken-4">
+        <h5><%= @course.name %></h5>
+        <hr>
+        <%= @course.content %>
+          <div class="collection">
+            <% @lessons.each do |lesson| %>
+              <% if lesson.header %>
+                <div class="collection-item active">
+                  <i class="tiny material-icons">queue_music</i><%= lesson.title %>
+                </div>
+              <% else %>
+                <%= link_to [lesson.course, lesson], class: "collection-item" do %>
+                  <%= lesson.title %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
