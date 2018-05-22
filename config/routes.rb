@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get '/mycourses' => 'courses#list'
   post '/free' => 'charges#free'
+  post '/pay' => 'charges#pay'
 
   root 'courses#index'
 

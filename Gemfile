@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# gem 'active_admin-sortable_tree', '~> 0.2.1'
+# gem 'active_admin-sortable_tree', '0.2.1'
+gem 'stripe'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
@@ -14,9 +15,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth'
+gem 'bourbon'
+gem 'jquery-ui-rails'
 gem 'omniauth-google-oauth2'
 gem 'jquery-rails'
-# gem 'bourbon', '3.0.1'
 gem 'materialize-sass'
 gem 'devise', '~> 4.2'
 gem 'toastr-rails'
