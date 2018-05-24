@@ -1,3 +1,15 @@
+<% content_for :head do %>
+  <title><%= @course.name %> | Plucking Classical Guitar</title>
+
+  <!-- Open Graph Date -->
+
+  <meta property="og:site_name" content="Plucking Classical Guitar">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<%= @course.name %>">
+  <meta property="og:description" content="<%= @course.content %>">
+  <meta property="og:image" content="<%= @course.image %>">
+<% end %>
+
 <div class="banner-show" style="background-color: #454544;">
   <div class="banner-content">
     <div class="col s12 m6">
