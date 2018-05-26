@@ -6,11 +6,11 @@
           <div class="collection">
             <% @lessons.each do |lesson| %>
               <% if lesson.header %>
-                <div class="collection-item active">
-                  <i class="tiny material-icons">queue_music</i><%= lesson.title %>
+                <div class="collection-item active small">
+                  <%= lesson.title %>
                 </div>
               <% else %>
-                <%= link_to [lesson.course, lesson], class: "collection-item" do %>
+                <%= link_to [lesson.course, lesson], class: "collection-item small" do %>
                   <%= lesson.title %>
                 <% end %>
               <% end %>
@@ -19,6 +19,27 @@
         </div>
       </div>
     </div>
+
+
+  <ul id="slide-out" class="side-nav">
+    <li><h5 class="header">Table of Contents</h5>
+
+    <% @lessons.each do |lesson| %>
+      <% if lesson.header %>
+        <li><a class="subheader"><%= lesson.title %></a></li>
+      <% else %>
+        <li><%= link_to [lesson.course, lesson] do %>
+            <%= lesson.title %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+  <script>
+    $(".button-collapse").sideNav();
+  </script>
 
      <div class="col m8">
       <div class="card z-depth-2">

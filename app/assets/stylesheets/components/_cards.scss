@@ -1,0 +1,48 @@
+.card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collection {
+  border: 0 !important;
+}
+
+.collection-item {
+  border-bottom: .5px solid #e6e2e2 !important;
+  border-radius: 6px;
+  padding: 20px 20px !important;
+}
+
+.collection-item.active {
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+}
+
+.collection-item.small {
+  border-bottom: 0 !important;
+  padding: 0 3px !important;
+}
+
+.card .card-image img {
+  border-radius: 6px !important;
+}
+
+.card-title {
+  margin-bottom: 1.5 rem !important;
+}
+
+.card-action-mt {
+  margin-top: 2.5rem;
+
+}
+
+ .overflow {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 2;
+    font-size: 18px;
+ }
