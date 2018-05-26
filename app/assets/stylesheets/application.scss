@@ -7,7 +7,16 @@
 .banner-content{
   color: white;
   padding: 6rem;
+}
 
+.btn.btn-primary {
+  background-color: #ff5b5c;
+}
+
+.card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .collection {
@@ -26,6 +35,15 @@
 
 .card .card-image img {
   border-radius: 6px !important;
+}
+
+.card-title {
+  margin-bottom: 1.5 rem !important;
+}
+
+.card-action-mt {
+  margin-top: 2.5rem;
+
 }
 
  .overflow {
