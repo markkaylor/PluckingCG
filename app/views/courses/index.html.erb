@@ -12,7 +12,7 @@
 <div class="card z-depth-0">
       <div class="row" style="margin: 5rem 0 0 0 !important">
         <div class="col s12 m6" style="padding-left: 0;">
-          <div class="card-image hoverable">
+          <div class="card-image">
             <%= link_to course do %>
               <%= image_tag course.image %>
             <% end %>
@@ -30,7 +30,7 @@
 
             <div class="card-action card-action-mt">
             <span style="font-size: 40px">
-               $<%= course.price %>
+               <%= course.price == 0? "Free" : "$#{course.price}" %>
             </span>
             <%= link_to "Get Pluckin", course, class: "btn btn-primary hoverable" %>
             </div>
