@@ -2,6 +2,12 @@
   margin: 0.5rem 0 5rem 0 !important;
 }
 
+.form-card {
+  padding: 3rem !important;
+  border-radius: 6px !important;
+  margin-top: 5rem !important;
+}
+
 .card-action {
   display: flex;
   align-items: center;
@@ -19,7 +25,6 @@
 }
 
 .collection-item.active {
-  margin-bottom: 5px;
   margin-top: 5px;
 
 }

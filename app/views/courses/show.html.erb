@@ -10,85 +10,70 @@
   <meta property="og:image" content="<%= @course.image %>">
 <% end %>
 
-<!-- <div class="banner-show" style="background-color: #454544;"> -->
-  <div class="container" style="background: linear-gradient(-225deg, rgba(99, 110, 117, 0.6) 0%, rgba(100, 103, 113, 0.6) 50%); border-radius: 6px; margin-top: 5rem;">
-      <div class="banner-content row">
-        <div class="col s12 m6 course-image">
-          <%= image_tag @course.image, class: "responsive-img course-image" %>
-        </div>
-        <div class="col s12 m6 center content-right">
-          <h4><%= @course.name %></h4>
 
+<div class="container" style="background: linear-gradient(-225deg, rgba(99, 110, 117, 0.6) 0%, rgba(100, 103, 113, 0.6) 50%); border-radius: 6px; margin-top: 5rem;">
+  <div class="banner-content row">
+    <div class="col s12 m6 course-image">
+      <%= image_tag @course.image, class: "responsive-img course-image" %>
+    </div>
+    <div class="col s12 m6 center content-right">
+      <h4><%= @course.name %></h4>
       <% if !@joined  %>
-
-
-              <br>
-              <h5><%= @course.price == 0? "Free" : "$#{@course.price}" %></h5>
-
-
-
-              <% if user_signed_in? %>
-                <% if @course.price == 0 %>
-                  <%= form_tag free_path do %>
-                  <%= hidden_field_tag 'course_id', @course.id  %>
-                    <button type="submit" class="btn pink darken-1">Get Pluckin</button>
-                  <% end %>
-
-                <% else %>
-                  <%= form_tag pay_path, id: 'chargeForm' do %>
-                  <script src="https://checkout.stripe.com/checkout.js"></script>
-                  <%= hidden_field_tag 'stripeToken' %>
-                  <%= hidden_field_tag 'stripeEmail' %>
-                  <%= hidden_field_tag 'course_id', @course.id %>
-
-                    <button id="customButton" type="button" class="hoverable btn btn-primary">Take this Course</button><br/>
-
-                    <script>
-                      var handler = StripeCheckout.configure({
-                        key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-                        locale: 'auto',
-                        token: function(token, arg) {
-                          $('#stripeToken').val(token.id);
-                          $('#stripeEmail').val(token.email);
-                          $('#chargeForm').submit();
-                        }
-                      });
-
-                    document.getElementById('customButton').addEventListener('click', function(e) {
-                      // Open Checkout with further options:
-                      handler.open({
-                        name: 'Plucking Classical Guitar',
-                        description: '<%= @course.name %>',
-                        currency: 'usd',
-                        amount: '<%= @course.price_in_cents %>',
-                        email: '<%= current_user.email %>'
-                      });
-                      e.preventDefault();
-                    });
-                  </script>
-
-                  <% end %>
-                <% end %>
-
-              <% else %>
-                  <%= link_to new_user_session_path do %>
-                    <button type="submit" class="btn btn-primary">Get Pluckin</button>
-                <% end %>
-              <% end %>
-
-
-          <% else %>
-
-
-              <h5>Welcome, <%= current_user.name %>!<br/>It's time to get pluckin!</h5>
-
-
-
+      <br>
+      <h5><%= @course.price == 0? "Free" : "$#{@course.price}" %></h5>
+        <% if user_signed_in? %>
+          <% if @course.price == 0 %>
+            <%= form_tag free_path do %>
+            <%= hidden_field_tag 'course_id', @course.id  %>
+            <button type="submit" class="btn btn-primary">Get Pluckin</button>
           <% end %>
-          </div>
-      </div>
-      </div>
-<!-- </div> -->
+
+        <% else %>
+          <%= form_tag pay_path, id: 'chargeForm' do %>
+              <script src="https://checkout.stripe.com/checkout.js"></script>
+              <%= hidden_field_tag 'stripeToken' %>
+              <%= hidden_field_tag 'stripeEmail' %>
+              <%= hidden_field_tag 'course_id', @course.id %>
+              <button id="customButton" type="button" class="hoverable btn btn-primary">Take this Course</button><br/>
+
+              <script>
+                var handler = StripeCheckout.configure({
+                  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                  locale: 'auto',
+                  token: function(token, arg) {
+                    $('#stripeToken').val(token.id);
+                    $('#stripeEmail').val(token.email);
+                    $('#chargeForm').submit();
+                  }
+                });
+
+              document.getElementById('customButton').addEventListener('click', function(e) {
+                // Open Checkout with further options:
+                handler.open({
+                  name: 'Plucking Classical Guitar',
+                  description: '<%= @course.name %>',
+                  currency: 'usd',
+                  amount: '<%= @course.price_in_cents %>',
+                  email: '<%= current_user.email %>'
+                });
+                e.preventDefault();
+              });
+            </script>
+          <% end %>
+        <% end %>
+
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <button type="submit" class="btn btn-primary">Get Pluckin</button>
+          <% end %>
+        <% end %>
+
+        <% else %>
+          <h5>Welcome, <%= current_user.name %>!<br/>It's time to get pluckin!</h5>
+        <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="container">
 
