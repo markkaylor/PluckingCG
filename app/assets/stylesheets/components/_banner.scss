@@ -1,12 +1,14 @@
 .banner {
   color: black;
-  text-align: center;
-  height: 80vh;
-  // height: calc(100vh - 70px);
+  text-align: bottom;
+  height: 50vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-position: bottom;
+  border-radius: 6px; margin-top: 5rem;
+
 }
 
 .banner h1 {
