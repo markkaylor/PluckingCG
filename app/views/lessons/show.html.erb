@@ -1,77 +1,63 @@
+
+
 <div class="container">
-  <div class="row">
-    <div class="col m4">
-      <div class="card z-depth-2">
-        <div class="card-content">
-          <div class="collection">
-            <% @lessons.each do |lesson| %>
-              <% if lesson.header %>
-                <div class="collection-item active small">
-                  <%= lesson.title %>
-                </div>
-              <% else %>
-                <%= link_to [lesson.course, lesson], class: "collection-item small" do %>
-                  <%= lesson.title %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+<ul id="slide-out" class="side-nav">
+  <div class="sidebar-container">
+    <div class="sidebar-header">
+      <li><h5 class="header">Table of Contents</h5></li>
     </div>
-
-
-  <ul id="slide-out" class="side-nav">
-    <li><h5 class="header">Table of Contents</h5>
-
-    <% @lessons.each do |lesson| %>
-      <% if lesson.header %>
-        <li><a class="subheader"><%= lesson.title %></a></li>
-      <% else %>
-        <li><%= link_to [lesson.course, lesson] do %>
-            <%= lesson.title %></li>
+  <div class="sidebar-section-list">
+      <% @lessons.each do |lesson| %>
+        <% if lesson.header %>
+          <div class="subheader"><%= lesson.title %></div>
+        <% else %>
+          <div class="sidebar-link hover"><%= link_to [lesson.course, lesson] do %>
+              <%= lesson.title %></div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
-  <script>
-    $(".button-collapse").sideNav();
-  </script>
-
-     <div class="col m8">
-      <div class="card z-depth-2">
-        <div class="flex-video widescreen">
-          <iframe src='https://www.youtube.com/embed/<%= @lesson.video %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
-        </div>
-        <div class="row">
-          <div class="col m6">
-            <% if !@prev_lesson.nil? %>
-              <%= link_to "Previous", [@prev_lesson.course, @prev_lesson], :class => "btn btn-primary" %>
-            <% else %>
-              &nbsp;
-            <% end %>
-          </div>
-          <div class="col m6">
-          <span class="right">
-            <% if !@next_lesson.nil? %>
-              <%= link_to "Next", [@next_lesson.course, @next_lesson], :class => "btn btn-primary" %>
-            <% end %>
-          </span>
-
-          </div>
-        </div>
-        <div class="card-action grey-text darken-2">
-          <h5><%= @lesson.title %></h5>
-          <hr>
-          <%= markdown(@lesson.note) %>
-        </div>
-      </div>
     </div>
   </div>
-</div>
+</ul>
+
+    <div class="row top-content">
+      <div class="col s1">
+        <a href="#" data-activates="slide-out" class="button-collapse sidebar"><i class="material-icons sidebar">list</i></a>
+      </div>
+      <div><h5><%= @lesson.title %></h5>
+    </div>
+      </div>
+
+    <div class="flex-video widescreen">
+      <iframe src='https://www.youtube.com/embed/<%= @lesson.video %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+    </div>
+    <div class="row">
+      <div class="col m6">
+        <% if !@prev_lesson.nil? %>
+          <%= link_to "Previous", [@prev_lesson.course, @prev_lesson], :class => "btn btn-primary btn-large" %>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </div>
+      <div class="col m6">
+
+        <% if !@next_lesson.nil? %>
+          <%= link_to "Next", [@next_lesson.course, @next_lesson], :class => "btn btn-primary btn-large" %>
+        <% end %>
+
+
+      </div>
+    </div>
+    <div class="card-action grey-text darken-2">
+      <%= markdown(@lesson.note) %>
+    </div>
+  </div>
+
+
+
+    <script>
+      $('.button-collapse').sideNav();
+    </script>
 
 
 
