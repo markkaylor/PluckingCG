@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20180519093404) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20180519093404) do
     t.index ["slug"], name: "index_courses_on_slug", unique: true
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 20180519093404) do
     t.string "video"
     t.boolean "header", default: false, null: false
     t.integer "tag"
-    t.integer "course_id"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -84,8 +87,8 @@ ActiveRecord::Schema.define(version: 20180519093404) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "user_id"
+    t.bigint "course_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id", "user_id"], name: "index_subscriptions_on_course_id_and_user_id", unique: true
@@ -114,4 +117,7 @@ ActiveRecord::Schema.define(version: 20180519093404) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lessons", "courses"
+  add_foreign_key "subscriptions", "courses"
+  add_foreign_key "subscriptions", "users"
 end
