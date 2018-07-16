@@ -17,7 +17,7 @@
   <nav class="white">
     <div class="nav-wrapper">
       <div class="container">
-      <a href="#!" class="brand-logo grey-text text-darken-3"><%= link_to image_tag("PCG_LOGO.jpg", alt: "logo", :class => "navbar-PCG-brand") %></a>
+      <%= link_to image_tag("PCG_LOGO.jpg", alt: "logo", :class => "navbar-PCG-brand"), root_path %>
       <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-3"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><%= link_to "Courses", root_path, :class => "grey-text text-darken-3" %></li>
